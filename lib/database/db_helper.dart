@@ -25,15 +25,16 @@ class DbHelper {
   }
 
   Future<void> _onCreate(Database db, int version) async {
-    await _db?.execute('''
-          CREATE TABLE $tableName (
-          id INTEGER PRIMARY KEY AUTOINCREMENT,
-          title TEXT,
-          description TEXT,
-          isActive INTEGER,
-          remindersTime TEXT,
-          category TEXT
-          ''');
+    await db.execute('''
+    CREATE TABLE $tableName (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      title TEXT,
+      description TEXT,
+      isActive INTEGER,
+      reminderTime TEXT,
+      category TEXT
+    )
+  ''');
   }
 
   static Future<List<Map<String, dynamic>>?> getReminders() async {
